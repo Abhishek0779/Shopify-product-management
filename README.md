@@ -90,4 +90,10 @@ npm start
 
 
 # SCREENSHOTS
+![Screenshot from 2024-01-12 21-27-51](https://github.com/Abhishek0779/Shopify-product-management/assets/79359745/7e29be9a-0bbc-4798-8dec-58bbee75620c)
+![Screenshot from 2024-01-12 21-27-46](https://github.com/Abhishek0779/Shopify-product-management/assets/79359745/8a6ca0cb-a9fa-4073-b3f4-557b78d6d412)
+![Screenshot from 2024-01-12 21-27-29](https://github.com/Abhishek0779/Shopify-product-management/assets/79359745/bf208a2a-c8b8-4dd1-8002-49ca61046353)
+![Screenshot from 2024-01-12 21-26-53](https://github.com/Abhishek0779/Shopify-product-management/assets/79359745/d6c36964-6523-4113-9f4b-ee4ff8521d35)
+![Screenshot from 2024-01-12 21-26-48](https://github.com/Abhishek0779/Shopify-product-management/assets/79359745/badc642c-6e8f-495c-8ed0-fd16e906a94f)
+![Screenshot from 2024-01-12 21-26-39](https://github.com/Abhishek0779/Shopify-product-management/assets/79359745/2861d454-c74c-4948-8d8a-f809da030423)
 
