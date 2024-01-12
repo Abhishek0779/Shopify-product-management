@@ -76,22 +76,17 @@ recommended NODE version:- Node 19.4.0
 
 In the Frontend directory, use the below command to download the required packages
 ```bash
-node i
-```
-
-In the Frontend directory, use the below command to download the required packages
-```bash
 npm i
 ```
 
-for run react app use the below command
+To run react app use the below command
 ```bash
 npm start
 ```
 
 # Note
 ### Limitation 
-- here i am using basic authentication. For live app recommended to use (JWT, OAuth, sessionAuth)
+- here I am using basic authentication. For live app recommended to use (JWT, OAuth, sessionAuth)
 
 
 # SCREENSHOTS
