@@ -78,7 +78,12 @@ In the Frontend directory, use the below command to download the required packag
 ```bash
 npm i
 ```
+In the Frontend directory, create a .env file. Add the following variables and adjust them according to the port of your respective backend.
 
+```bash
+REACT_APP_API_ENDPOINT="http://localhost:5000/"
+REACT_APP_LOGIN_REDIRECT_URL="http://localhost:5000/Login"
+```
 To run react app use the below command
 ```bash
 npm start
@@ -86,7 +91,8 @@ npm start
 
 # Note
 ### Limitation 
-- here I am using basic authentication. For live app recommended to use (JWT, OAuth, sessionAuth)
+- here I am using basic authentication. For live app recommended to use (JWT, OAuth, sessionAuth) with encryption of password
+- To enhance the product creation/edit feature, consider implementing image upload functionality using the Shopify CDN.
 
 
 # SCREENSHOTS
