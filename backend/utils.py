@@ -51,7 +51,7 @@ class IdentityMap:
                 print("Object not expired yet,fetching from memory")
                 return val["object"]
             else :
-                print("Object expired, fetching from db",self.objects)
+                print("Object expired, fetching from db")
 
                 val = abhi_users.find_one({"token": object_id}) 
                 return val   
@@ -67,7 +67,6 @@ class IdentityMap:
         current_time = datetime.datetime.now()
         if key in self.objects:
             expiration_time = self.objects[key].get("expiration_time")
-            print("self.objects",self.objects)
             if expiration_time < current_time :
                 del self.objects[key]
             return expiration_time < current_time
