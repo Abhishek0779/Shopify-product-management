@@ -1,21 +1,21 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import { ChakraProvider } from '@chakra-ui/react'
-import Routes from './routes';
-import reportWebVitals from './reportWebVitals';
-import Footer from './components/Footer';
-import NavBar from './components/Navbar';
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
-  // rendering the ChakraProvider component which wraps around the entire application
-  <ChakraProvider >
-     {/* rendering the command component */}
-    <NavBar />
-    <Routes />
-    <Footer />
-  </ChakraProvider>
+import AuthLayout from "./layouts/Auth.js";
+import AdminLayout from "./layouts/Admin.js";
+
+ReactDOM.render(
+  <BrowserRouter>
+      {/* Use the Switch component to render only the first Route or Redirect that matches the location */}
+    <Switch>
+      <Route path={`/auth`} component={AuthLayout} />
+      <Route path={`/admin`} component={AdminLayout} />
+      {/* <Route path={`/rtl`} component={RTLLayout} /> */}
+      <Redirect from={`/`} to="/admin/dashboard" />
+      {/* Add a wildcard route to catch unknown paths */}
+      <Route path="*" render={() => <Redirect to="/auth/signin" />} />
+    </Switch>
+  </BrowserRouter>,
+  document.getElementById("root")
 );
-
-reportWebVitals();

@@ -1,54 +1,71 @@
-import axios from "axios";
+import axios from 'axios'
+import Cookies from 'js-cookie';
 
 // Creating an instance of axios with a base URL
 const api = axios.create({
-  baseURL: `${process.env.REACT_APP_API_ENDPOINT}`,
-});
+  baseURL: `${process.env.REACT_APP_API_ENDPOINT}`
+})
 
 // Function to get request Cookies
-function getCookie(name) {
-  let cookieValue = null;
-  if (document.cookie && document.cookie !== "") {
-    const cookies = document.cookie.split(";");
+function getCookie (name) {
+  let cookieValue = null
+  if (document.cookie && document.cookie !== '') {
+    const cookies = document.cookie.split(';')
     for (let i = 0; i < cookies.length; i += 1) {
-      const cookie = cookies[i].trim();
-      if (cookie.substring(0, name.length + 1) === name + "=") {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
+      const cookie = cookies[i].trim()
+      if (cookie.substring(0, name.length + 1) === name + '=') {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1))
+        break
       }
     }
   }
-  return cookieValue;
+  return cookieValue
 }
 
 // Function to get basic token from local storage
-function getBasicToken() {
+function getBasicToken () {
+  let basic_access_token = Cookies.get('access_token')
+  const access_token = basic_access_token
 
-  let basic_access_token = localStorage.getItem("access_token");
-  const access_token = "Basic " + basic_access_token;
-
-  if (basic_access_token) { return access_token; }
-  else {
-    return null;
+  if (basic_access_token) {
+    return access_token
+  } else {
+    return null
   }
 }
+
 // configration of axios required request headers
 
 api.interceptors.request.use(
-  (config) => {
-    const tmpConfig = config;
-    tmpConfig.withCredentials = true;
-    tmpConfig.crossDomain = true;
-    tmpConfig.defaults = {};
-    tmpConfig.defaults.withCredentials = true;
-    tmpConfig.headers.Authorization = getBasicToken();
-    tmpConfig.headers["X-CSRFToken"] = getCookie("csrftoken");
-    return tmpConfig;
+  config => {
+    const tmpConfig = config
+    tmpConfig.withCredentials = true
+    tmpConfig.crossDomain = true
+    tmpConfig.defaults = {}
+    tmpConfig.defaults.withCredentials = true
+    tmpConfig.headers.Authorization = getBasicToken()
+    tmpConfig.headers['X-CSRFToken'] = getCookie('csrftoken')
+    return tmpConfig
   },
-  (error) => {
-    return Promise.reject(error);
+  error => {
+    return Promise.reject(error)
   }
-);
+)
+
+export const logout = async () => {
+  try {
+    // Perform any additional cleanup logic if needed
+
+    // Remove the access_token cookie
+    Cookies.remove('access_token');
+
+    // Redirect to the login page or perform any other desired action
+    window.location.href = process.env.REACT_APP_LOGIN_REDIRECT_URL;
+  } catch (error) {
+    console.error('Logout error:', error);
+  }
+};
+
 // api.interceptors.response.use(
 //   (response) => {
 //     console.log("resresresresresres",response)
@@ -65,4 +82,5 @@ api.interceptors.request.use(
 //     return Promise.reject(error);
 //   }
 // );
-export default api;
+
+export default api

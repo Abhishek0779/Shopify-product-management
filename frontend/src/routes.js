@@ -1,21 +1,58 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./pages/dashboard";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
-import ProductPage from "./pages/ProductPage";
-import AddProductPage from "./pages/AddProductPage";
+// import
+import Dashboard from "./views/Dashboard/Dashboard";
+import ActivityLog from "./views/Dashboard/ActivityLog";
+import Product from "./views/Dashboard/Products";
+import SignIn from "./views/Auth/SignIn.js";
+import SignUp from "./views/Auth/SignUp.js";
 
-export default function App() {
-    return (
-        <BrowserRouter>
-            {/* The Routes component is used to define different routes for different pages */}
-            <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="Login" element={<LoginPage />} />
-                <Route path="Signup" element={<SignupPage />} />
-                <Route path="product/:id" element={<ProductPage />} />
-                <Route path="product/add" element={<AddProductPage />} />
-            </Routes>
-        </BrowserRouter>
-    );
-}
+import {
+  HomeIcon,
+  DocumentIcon,
+  RocketIcon,
+} from "./components/Icons/Icons";
+
+// array of route objects
+var dashRoutes = [
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    rtlName: "لوحة القيادة",
+    icon: <HomeIcon color="inherit" />,
+    component: Dashboard,
+    layout: "/admin",
+  },
+  {
+    path: "/product/:id",
+    name: "product",
+    rtlName: "",
+    icon:"",
+    component: Product,
+    layout: "/admin",
+  },
+  {
+    path: "/activity-log",
+    name: "Activity Log",
+    rtlName: " ",
+    icon:"",
+    component: ActivityLog,
+    layout: "/admin",
+  },
+  {
+    path: "/signin",
+    name: "Sign In",
+    rtlName: "لوحة القيادة",
+    icon: <DocumentIcon color="inherit" />,
+    component: SignIn,
+    layout: "/auth",
+  },
+  {
+    path: "/signup",
+    name: "Sign Up",
+    rtlName: "لوحة القيادة",
+    icon: <RocketIcon color="inherit" />,
+    secondaryNavbar: true,
+    component: SignUp,
+    layout: "/auth",
+  }
+];
+export default dashRoutes;
